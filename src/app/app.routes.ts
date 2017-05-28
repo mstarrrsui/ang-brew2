@@ -9,7 +9,7 @@ export const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'counter', component: CounterComponent },
-  { path: 'fetch-data', component: FetchDataComponent },
+  // { path: 'fetch-data', component: FetchDataComponent },
   { path: 'hops', component: HopsListComponent },
   { path: '**', redirectTo: 'home' }
 ];

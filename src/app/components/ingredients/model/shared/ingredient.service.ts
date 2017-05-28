@@ -1,34 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Jsonp } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Hop } from '../hop.model';
 
 import 'rxjs/add/operator/toPromise';
 
+const API_LOCATION: string = 'http://localhost:7203';
 
 @Injectable()
 export class IngredientService {
 
-    private API_LOCATION: string = 'http:/localhost:7203';
 
-    constructor(private http: Http, private jsonp: Jsonp) { }
+    constructor(private http: Http) { }
 
-    getHops(): Observable<Hop[]> {
+    public getHops(): Observable<Hop[]> {
 
-        let params = new URLSearchParams();
-        params.set('callback', 'JSONP_CALLBACK');
-
-        return this.jsonp.get(this.API_LOCATION + '/api/hops', { search: params })
+        return this.http.get(API_LOCATION + '/api/hops')
             // .toPromise()
             // .then(response => response.json() as Hop[])
             .map((res: Response) => res.json().data as Hop[])
             .catch(this.handleError);
     }
 
-    getHops2(onNext: (hopslist: Hop[]) => void): void {
-        let params = new URLSearchParams();
-        params.set('callback', 'JSONP_CALLBACK');
-        this.jsonp.get('http:/localhost:7203/api/hops&callback=JSONP_CALLBACK')
+    public getHops2(onNext: (hopslist: Hop[]) => void): void {
+        this.http.get(API_LOCATION + '/api/hops')
             // .toPromise()
             // .then(response => response.json() as Hop[])
             .map((res: Response) => res.json().data as Hop[])
