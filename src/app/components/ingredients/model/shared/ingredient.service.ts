@@ -1,30 +1,38 @@
-import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs/Rx";
-import { Hop } from "../hop.model";
+import { Injectable } from '@angular/core';
+import { Http, Response, Jsonp } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { Hop } from '../hop.model';
 
-import "rxjs/add/operator/toPromise";
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class IngredientService {
 
-    constructor(private http: Http) {}
+    private API_LOCATION: string = 'http:/localhost:7203';
+
+    constructor(private http: Http, private jsonp: Jsonp) { }
 
     getHops(): Observable<Hop[]> {
-        return this.http.get("/api/ingredient/hops")
-                //.toPromise()
-                //.then(response => response.json() as Hop[])
-                .map((res: Response) => res.json().data as Hop[])
-                .catch(this.handleError);
+
+        let params = new URLSearchParams();
+        params.set('callback', 'JSONP_CALLBACK');
+
+        return this.jsonp.get(this.API_LOCATION + '/api/hops', { search: params })
+            // .toPromise()
+            // .then(response => response.json() as Hop[])
+            .map((res: Response) => res.json().data as Hop[])
+            .catch(this.handleError);
     }
 
     getHops2(onNext: (hopslist: Hop[]) => void): void {
-        this.http.get("/api/ingredient/hops")
-                //.toPromise()
-                //.then(response => response.json() as Hop[])
-                .map((res: Response) => res.json().data as Hop[])
-                .subscribe(onNext,this.handleError)
+        let params = new URLSearchParams();
+        params.set('callback', 'JSONP_CALLBACK');
+        this.jsonp.get('http:/localhost:7203/api/hops&callback=JSONP_CALLBACK')
+            // .toPromise()
+            // .then(response => response.json() as Hop[])
+            .map((res: Response) => res.json().data as Hop[])
+            .subscribe(onNext, this.handleError);
     }
 
     // private handleError(error: any): Promise<any> {
@@ -34,7 +42,7 @@ export class IngredientService {
 
     public handleError(error: Response) {
         console.error(error);
-        return Observable.throw(error || "Server error");
+        return Observable.throw(error || 'Server error');
     }
 
 }
