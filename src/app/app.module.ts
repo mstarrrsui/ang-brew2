@@ -34,7 +34,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { HopsListComponent } from './components/ingredients/hops-list.component';
 import { HopsItemComponent } from './components/ingredients/hops-item.component';
 import { HomeComponent } from './components/home/home.component';
-import { IngredientService } from './components/ingredients/model/shared/ingredient.service';
+import { IngredientService } from './components/ingredients/shared/ingredient.service';
 
 // Application wide providers
 const APP_PROVIDERS = [

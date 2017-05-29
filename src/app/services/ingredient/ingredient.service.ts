@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Hop } from '../hop.model';
+import { Hop } from '../model/hop.model';
 
 import 'rxjs/add/operator/toPromise';
 
