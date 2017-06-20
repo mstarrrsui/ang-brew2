@@ -10,7 +10,6 @@ const API_LOCATION: string = 'http://localhost:7203';
 @Injectable()
 export class IngredientService {
 
-
     constructor(private http: Http) { }
 
     public getHops(): Observable<Hop[]> {

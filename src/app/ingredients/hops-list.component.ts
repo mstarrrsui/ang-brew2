@@ -13,12 +13,12 @@ export class HopsListComponent implements OnInit {
 
     constructor(private ingredientService: IngredientService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         // this.ingredientService.getHops().subscribe( data => this.hopdata = data);
         this.ingredientService.getHops2( (data) => this.hopdata = data);
     }
 
-    handleItemClicked(item: Hop) {
+    public handleItemClicked(item: Hop) {
         console.log('received:', item.name);
         // this.toastr.success(item.name);
     }

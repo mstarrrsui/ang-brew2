@@ -7,10 +7,10 @@ import { Hop } from './model/hop.model';
     styleUrls: ['./hops-item.component.css']
 })
 export class HopsItemComponent {
-    @Input() hop: Hop;
-    @Output() itemClick = new EventEmitter();
+    @Input() public hop: Hop;
+    @Output() public itemClick = new EventEmitter();
 
-    handleClickMe() {
+    public handleClickMe() {
         console.log('clicked item!');
         this.itemClick.emit(this.hop);
     }

@@ -34,7 +34,7 @@ import { FetchDataComponent } from './fetchdata/fetchdata.component';
 import { HopsListComponent } from './ingredients/hops-list.component';
 import { HopsItemComponent } from './ingredients/hops-item.component';
 import { HomeComponent } from './home/home.component';
-import { IngredientService } from './ingredients/shared/ingredient.service';
+import { IngredientService } from './ingredients/service/ingredient.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -42,7 +42,7 @@ const APP_PROVIDERS = [
   AppState,
   IngredientService
 ];
- 
+
 type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,
