@@ -21,20 +21,20 @@ import {
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './app/app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
 import '../styles/bootstrap/bootstrap.min.css';
 import '../styles/styles.css';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { NavBarComponent } from './components/navbar/navbar.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { HopsListComponent } from './components/ingredients/hops-list.component';
-import { HopsItemComponent } from './components/ingredients/hops-item.component';
-import { HomeComponent } from './components/home/home.component';
-import { IngredientService } from './components/ingredients/shared/ingredient.service';
+import { NavMenuComponent } from './navmenu/navmenu.component';
+import { NavBarComponent } from './navbar/navbar.component';
+import { CounterComponent } from './counter/counter.component';
+import { FetchDataComponent } from './fetchdata/fetchdata.component';
+import { HopsListComponent } from './ingredients/hops-list.component';
+import { HopsItemComponent } from './ingredients/hops-item.component';
+import { HomeComponent } from './home/home.component';
+import { IngredientService } from './ingredients/shared/ingredient.service';
 
 // Application wide providers
 const APP_PROVIDERS = [

@@ -1,14 +1,14 @@
-/// <reference path="../../../../../node_modules/@types/jasmine/index.d.ts" />
+/// <reference path="../../../../node_modules/@types/jasmine/index.d.ts" />
 import { assert } from 'chai';
 import { TestBed, async, inject } from '@angular/core/testing';
-import { IngredientService } from "./ingredient.service";
+import { IngredientService } from './ingredient.service';
 import {
     BaseRequestOptions, RequestOptions, Response,
     ResponseOptions, ConnectionBackend, Http
-} from "@angular/http";
+} from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import {default as testdata} from './testdata';
-import { Hop } from "../hop.model";
+import { Hop } from '../model/hop.model';
 
 describe('Ingredient Service component', () => {
     beforeEach(() => {

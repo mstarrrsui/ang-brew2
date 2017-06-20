@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hop } from './model/hop.model';
-import { IngredientService } from './shared/ingredient.service';
+import { IngredientService } from './service/ingredient.service';
 // import { ToastrService } from "../common/toastr.service";
 
 @Component({
