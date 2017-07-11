@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-reference
 /// <reference path="../../../node_modules/@types/jasmine/index.d.ts" />
 import { assert } from 'chai';
 import { CounterComponent } from './counter.component';
@@ -16,7 +17,6 @@ describe('Counter component', () => {
         const titleText = fixture.nativeElement.querySelector('h1').textContent;
         expect(titleText).toEqual('Counter');
 
-        
     }));
 
     it('should start with count 0, then increments by 1 when clicked', async(() => {

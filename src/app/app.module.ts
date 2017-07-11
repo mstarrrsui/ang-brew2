@@ -27,7 +27,6 @@ import { AppState, InternalStateType } from './app.service';
 
 import '../styles/bootstrap/bootstrap.min.css';
 import '../styles/styles.css';
-import { NavMenuComponent } from './navmenu/navmenu.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetchdata/fetchdata.component';
@@ -35,6 +34,7 @@ import { HopsListComponent } from './ingredients/hops-list.component';
 import { HopsItemComponent } from './ingredients/hops-item.component';
 import { HomeComponent } from './home/home.component';
 import { IngredientService } from './ingredients/service/ingredient.service';
+import { Error404Component } from './errors/404.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -56,13 +56,13 @@ type StoreType = {
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    NavMenuComponent,
     NavBarComponent,
     CounterComponent,
     FetchDataComponent,
     HopsListComponent,
     HopsItemComponent,
-    HomeComponent
+    HomeComponent,
+    Error404Component
   ],
   /**
    * Import Angular's modules.
