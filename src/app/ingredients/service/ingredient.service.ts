@@ -7,6 +7,42 @@ import 'rxjs/add/operator/toPromise';
 
 const API_LOCATION: string = 'http://localhost:7203';
 
+const FAKEHOPS = [
+		{
+			hsi:  "15.0000000",
+			id:  0,
+			type:  "Bittering",
+			betaAcid:  "5.6000000",
+			description:  "Bittering hops derived from Wye Challenger.  Good high-alpha bittering hops.\nUsed for: Ales\nAroma: Primarily for bittering\nSubstitutes: Target, Northdown, Challenger\n",
+			alphaAcid:  '14.7500000',
+			useIn:  'Boil',
+			name:  'Admiral',
+			countryOfOrigin:  'United Kingdom'
+		},
+		{
+			hsi:  '15.0000000',
+			id:  1,
+			type:  'Bittering',
+			betaAcid:  '5.2500000',
+			description:  'Several large Czech breweries like Agnus as a bittering hop because its alpha/beta ratio is relatively high, which they believe makes their beer more stable. High geraniol level, oils indicate dry hopping potential.\nUsed for: Ales\nAroma: Strong hop aroma, spicy\nSubstitutions: Unknown\nStorage: Unknown\n9-15% AA / 4-8% Beta',
+			alphaAcid:  '10.5000000',
+			useIn:  'Boil',
+			name:  'Agnus',
+			countryOfOrigin:  'Czech Republic'
+		},
+		{
+			hsi:  '30.0000000',
+			id:  2,
+			type:  'Aroma',
+			betaAcid:  '5.2500000',
+			description:  'Distinctive aromatic hops with moderate bittering power from Washington.\nUsed for: American ales and lagers\nAroma: Distinctive floral and citrus aromas\nSubstitutes: Amarillo, Cascade',
+			alphaAcid:  '6.0000000',
+			useIn:  'Boil',
+			name:  'Ahtanum',
+			countryOfOrigin:  'U.S.'
+        }
+    ];
+
 @Injectable()
 export class IngredientService {
 
@@ -27,6 +63,16 @@ export class IngredientService {
             // .then(response => response.json() as Hop[])
             .map((res: Response) => res.json().data as Hop[])
             .subscribe(onNext, this.handleError);
+    }
+
+    public getHop(id: number): Observable<Hop> {
+        return this.getHops()
+            .do( (list) => console.log(list))
+            .map( hops => hops.find( (h) => h.id === id));
+    }
+    
+    public getHop2(id: number): Hop {
+        return FAKEHOPS.find( (h) => h.id === id);
     }
 
     // private handleError(error: any): Promise<any> {

@@ -35,6 +35,7 @@ import { HopsItemComponent } from './ingredients/hops-item.component';
 import { HomeComponent } from './home/home.component';
 import { IngredientService } from './ingredients/service/ingredient.service';
 import { Error404Component } from './errors/404.component';
+import { HopDetailComponent } from './ingredients/hops-detail/hop-detail.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -61,6 +62,7 @@ type StoreType = {
     FetchDataComponent,
     HopsListComponent,
     HopsItemComponent,
+    HopDetailComponent,
     HomeComponent,
     Error404Component
   ],
@@ -71,7 +73,7 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { enableTracing: true, useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

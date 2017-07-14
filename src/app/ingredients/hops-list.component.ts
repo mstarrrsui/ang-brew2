@@ -14,8 +14,8 @@ export class HopsListComponent implements OnInit {
     constructor(private ingredientService: IngredientService) { }
 
     public ngOnInit() {
-        // this.ingredientService.getHops().subscribe( data => this.hopdata = data);
-        this.ingredientService.getHops2( (data) => this.hopdata = data);
+        this.ingredientService.getHops().subscribe( data => this.hopdata = data);
+        //this.ingredientService.getHops2( (data) => this.hopdata = data);
     }
 
     public handleItemClicked(item: Hop) {
