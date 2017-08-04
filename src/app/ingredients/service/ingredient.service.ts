@@ -46,21 +46,23 @@ const FAKEHOPS = [
 @Injectable()
 export class IngredientService {
 
+    private _hopslist: Observable<Hop[]> = null;
+
     constructor(private http: Http) { }
 
     public getHops(): Observable<Hop[]> {
 
-        return this.http.get(API_LOCATION + '/api/hops')
-            // .toPromise()
-            // .then(response => response.json() as Hop[])
-            .map((res: Response) => res.json().data as Hop[])
-            .catch(this.handleError);
+        if (!this._hopslist) {
+            this._hopslist =  this.http.get(API_LOCATION + '/api/hops')
+                .map((res: Response) => res.json().data as Hop[])
+                .publishReplay(1).refCount()
+                .catch(this.handleError);
+        }
+        return this._hopslist;
     }
 
     public getHops2(onNext: (hopslist: Hop[]) => void): void {
         this.http.get(API_LOCATION + '/api/hops')
-            // .toPromise()
-            // .then(response => response.json() as Hop[])
             .map((res: Response) => res.json().data as Hop[])
             .subscribe(onNext, this.handleError);
     }
